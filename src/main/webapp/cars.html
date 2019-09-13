@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            td{
+                border: 2px solid black;
+
+
+            }
+            th{
+                background-color: gray;
+                color: black;
+                border: 2px solid black;
+                height: 30px;
+
+            }
+            .right{
+                position: absolute;
+
+            }
+        </style>
+    </head>
+    <body>
+        <a href="index.html">Back To Frontpage</a>
+        <form method="GET">
+            <div>
+                <center>
+                    <h1>Cars</h1>
+                </center> 
+            </div>
+            <center>
+            <input type="text" id="input" placeholder="Show only (Make)"><button id="btnFilter">Show</button>
+            <br>
+            <br>
+            <input type="text" id="inputPrice" placeholder="Max Cost"><button id="btnPrice">Submit</button>
+            <br>
+            <br>
+            <button id="btnAll">Show All Cars</button>
+            <br>
+            <br>
+            <table id="table" class="w3-table-all w3-card-3">
+
+
+            </table > 
+
+            </center>
+            <script src="scriptCars.js"></script>
+        </form>
+    </body>
+</html>
