@@ -16,12 +16,12 @@ import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class FacadeExampleTest {
+public class CarsFacadeTest {
 
     private static EntityManagerFactory emf;
-    private static FacadeExample facade;
+    private static CarsFacade facade;
 
-    public FacadeExampleTest() {
+    public CarsFacadeTest() {
     }
 
     //@BeforeAll
@@ -32,7 +32,7 @@ public class FacadeExampleTest {
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
-        facade = FacadeExample.getFacadeExample(emf);
+        facade = CarsFacade.getFacadeExample(emf);
     }
 
     /*   **** HINT **** 
@@ -44,7 +44,7 @@ public class FacadeExampleTest {
     @BeforeAll
     public static void setUpClassV2() {
        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,Strategy.DROP_AND_CREATE);
-       facade = FacadeExample.getFacadeExample(emf);
+       facade = CarsFacade.getFacadeExample(emf);
     }
 
     @AfterAll
@@ -60,8 +60,8 @@ public class FacadeExampleTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Cars.deleteAllRows").executeUpdate();
-            em.persist(new Cars("Some txt", "More text"));
-            em.persist(new Cars("aaa", "bbb"));
+            em.persist(new Cars(1L, "Mercedes-benz", "E350", "10/04-2016", 2017L, 268L, 16000L, 5L, 719000L));
+            em.persist(new Cars(2L, "VW", "Golf", "03/07-2010", 2010L, 115L, 206000L, 5L, 130000L));
 
             em.getTransaction().commit();
         } finally {
@@ -74,10 +74,10 @@ public class FacadeExampleTest {
 //        Remove any data after each test was run
     }
 
-    // TODO: Delete or change this method 
-//    @Test
-//    public void testAFacadeMethod() {
-//        assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
-//    }
+     
+    @Test
+    public void testAFacadeMethod() {
+        assertEquals(2, facade.getCars().size(), "Expects two rows in the database");
+    }
 
 }
