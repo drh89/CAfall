@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/drh89/CAfall.png)](https://travis-ci.org/drh89/CAfall)
+[![Build Status](https://travis-ci.com/drh89/CAfall.png)](https://travis-ci.com/drh89/CAfall)
 
 *This project is meant as start code for projects and exercises given in Flow-1+2 at http://cphbusiness.dk in the Study Program "AP degree in Computer Science"*
 
