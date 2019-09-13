@@ -59,7 +59,7 @@ public class FacadeExampleTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Cars.deleteAllRows").executeUpdate();
             em.persist(new Cars("Some txt", "More text"));
             em.persist(new Cars("aaa", "bbb"));
 
@@ -75,9 +75,9 @@ public class FacadeExampleTest {
     }
 
     // TODO: Delete or change this method 
-    @Test
-    public void testAFacadeMethod() {
-        assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
-    }
+//    @Test
+//    public void testAFacadeMethod() {
+//        assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
+//    }
 
 }
