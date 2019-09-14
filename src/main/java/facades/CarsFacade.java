@@ -54,7 +54,7 @@ public class CarsFacade {
         return cars;
     }
 
-    public void populate(Cars car) {
+    public void addCar(Cars car) {
         EntityManager em = getEntityManager();
 
         em.getTransaction().begin();
