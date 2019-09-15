@@ -6,7 +6,7 @@ var btnFilter = document.getElementById("btnFilter");
 var input = document.getElementById("input");
 var btnPrice = document.getElementById("btnPrice");
 var inputPrice = document.getElementById("inputPrice");
-var dom = "http://localhost:8080/CAfall/api/cars";
+var dom = "https://cphbusines.dk/CAfall/api/cars";
 
 
 

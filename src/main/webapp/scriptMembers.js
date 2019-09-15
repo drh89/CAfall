@@ -4,7 +4,7 @@ var btnReload = document.getElementById("btnReload");
 
 
 
-let dom = "http://localhost:8080/CAfall/api/groupmembers";
+let dom = "https://cphbusines.dk/CAfall/api/groupmembers";
 
 
 

@@ -6,7 +6,7 @@ var btnJokes = document.getElementById("btnJokes");
 
 var btnRandJoke = document.getElementById("btnRandJoke");
 
-let dom = "http://localhost:8080/CAfall/api/jokes";
+let dom = "https://cphbusines.dk/CAfall/api/jokes";
 
 
 onload = getAllJokes();
