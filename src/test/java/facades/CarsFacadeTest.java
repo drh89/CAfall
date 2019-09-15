@@ -62,6 +62,7 @@ public class CarsFacadeTest {
             em.createNamedQuery("Cars.deleteAllRows").executeUpdate();
             em.persist(new Cars(1L, "Mercedes-benz", "E350", "10/04-2016", 2017L, 268L, 16000L, 5L, 719000L));
             em.persist(new Cars(2L, "VW", "Golf", "03/07-2010", 2010L, 115L, 206000L, 5L, 130000L));
+            em.persist(new Cars(3L, "VW", "Golf", "03/07-2013", 2013L, 125L, 226222L, 5L, 132020L));
 
             em.getTransaction().commit();
         } finally {
@@ -76,8 +77,33 @@ public class CarsFacadeTest {
 
      
     @Test
-    public void testAFacadeMethod() {
-        assertEquals(2, facade.getAllCars().size(), "Expects two rows in the database");
+    public void getAllCarsTest() {
+        assertEquals(3, facade.getAllCars().size(), "Expects two rows in the database");
     }
+    
+    
+    @Test
+    public void addCarTest(){
+        int sizeBefore = facade.getAllCars().size();
+        
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(new Cars(4L, "BMW", "E300", "02/08-2018", 2018L, 114L, 0L, 2L, 200000L));
+        em.getTransaction().commit();
+        em.close();
+        
+        int sizeAfter = facade.getAllCars().size();
+        
+        assertEquals(sizeBefore + 1, sizeAfter);
+        
+    }
+    @Test
+    public void getCarsByMake(){
+        assertEquals(2, facade.getCarsByMake("VW").size());
+        assertEquals(1, facade.getCarsByMake("Mercedes-benz").size());
+        
+        
+    }
+        
 
 }

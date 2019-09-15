@@ -71,8 +71,9 @@ public class CarsResourceTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Cars.deleteAllRows").executeUpdate();
-            em.persist(new Cars());
-            em.persist(new Cars());
+            em.persist(new Cars(1L, "Mercedes-benz", "E350", "10/04-2016", 2017L, 268L, 16000L, 5L, 719000L));
+            em.persist(new Cars(2L, "VW", "Golf", "03/07-2010", 2010L, 115L, 206000L, 5L, 130000L));
+            em.persist(new Cars(3L, "VW", "Golf", "03/07-2013", 2013L, 125L, 226222L, 5L, 132020L));
            
             em.getTransaction().commit();
         } finally {
@@ -85,7 +86,21 @@ public class CarsResourceTest {
         System.out.println("Testing is server UP");
         given().when().get("/cars").then().statusCode(200);
     }
-   
+    @Test
+    public void getAllCarsTest(){
+        given().when().get("/cars/all").then().statusCode(200);                
+                
+    }
+    @Test
+    public void getCarsByMake(){
+        given().when().get("/cars/makename/VW").then().statusCode(200);
+    }
+    
+    @Test
+    public void populateTest(){
+        given().when().get("/cars/populate").then().statusCode(200);
+    }
+    
     //This test assumes the database contains two rows
     @Test
     public void testDummyMsg() throws Exception {
