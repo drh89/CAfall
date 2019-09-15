@@ -16,6 +16,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import utils.EMF_Creator;
+import utils.EMF_Creator.DbSelector;
+import utils.EMF_Creator.Strategy;
 
 /**
  *
@@ -31,7 +33,7 @@ public class MembersFacadeTest {
     
     @BeforeAll
     public static void setUpClass() {
-        emf = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.TEST,EMF_Creator.Strategy.DROP_AND_CREATE);
+        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,Strategy.DROP_AND_CREATE);
        facade = MembersFacade.getFacadeExample(emf);
     }
     
@@ -68,10 +70,9 @@ public class MembersFacadeTest {
         int sizeBefore = facade.getAllMembers().size();
         EntityManager em = emf.createEntityManager();
         
-        em.getTransaction().begin();
-        em.persist(new Members(4L, "Didrik", "cph-d", "green"));
-        em.getTransaction().commit();
-        em.close();
+       
+        facade.addMember(new Members(4L, "Didrik", "cph-d", "green"));
+       
         
         int sizeAfter = facade.getAllMembers().size();
         

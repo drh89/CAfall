@@ -96,10 +96,10 @@ public class CarsResourceTest {
         given().when().get("/cars/makename/VW").then().statusCode(200);
     }
     
-    @Test
-    public void populateTest(){
-        given().when().get("/cars/populate").then().statusCode(200);
-    }
+//    @Test
+//    public void populateTest(){
+//        given().when().get("/cars/populate").then().statusCode(200);
+//    }
     
     //This test assumes the database contains two rows
     @Test

@@ -64,7 +64,7 @@ public class MembersResource {
     @Path("/populate")
     public String populate(){
         Members drh89 = new Members(1L, "drh89", "cph-dh153", "red");
-        Members rangerRyge = new Members(1L, "rangerRyge", "cph-jrXXX", "red");
+        Members rangerRyge = new Members(1L, "rangerRyge", "cph-jr221", "red");
         FACADE.addMember(drh89);
         FACADE.addMember(rangerRyge);
         return "Success!!!";

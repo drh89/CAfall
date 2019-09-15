@@ -5,7 +5,7 @@
  */
 package rest;
 
-import entities.Members;
+import entities.Jokes;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import io.restassured.parsing.Parser;
@@ -24,17 +24,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static rest.CarsResourceTest.BASE_URI;
-import static rest.CarsResourceTest.startServer;
+import static rest.MembersResourceTest.startServer;
 import utils.EMF_Creator;
-import utils.EMF_Creator.DbSelector;
-import utils.EMF_Creator.Strategy;
 
 /**
  *
  * @author Dennis
  */
-public class MembersResourceTest {
+public class JokesResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
@@ -48,12 +45,12 @@ public class MembersResourceTest {
         return GrizzlyHttpServerFactory.createHttpServer(BASE_URI, rc);
     }
 
-    public MembersResourceTest() {
+    public JokesResourceTest() {
     }
 
     @BeforeAll
     public static void setUpClass() {
-        emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST, Strategy.CREATE);
+        emf = EMF_Creator.createEntityManagerFactory(EMF_Creator.DbSelector.TEST, EMF_Creator.Strategy.CREATE);
 
         httpServer = startServer();
 
@@ -72,52 +69,68 @@ public class MembersResourceTest {
 
     @BeforeEach
     public void setUp() {
-        
+
         EntityManager em = emf.createEntityManager();
-        try{
+        try {
             em.getTransaction().begin();
-            em.createNamedQuery("Members.deleteAllRows").executeUpdate();
-            em.persist(new Members(1L, "Jan", "cph-j", "green"));
-            em.persist(new Members(2L, "Hanne", "cph-h", "yellow"));
-            em.persist(new Members(3L, "Knud", "cph-k", "red"));
-            
+            em.createNamedQuery("Jokes.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Jokes.deleteAllRows").executeUpdate();
+            em.persist(new Jokes(1L, "Blind Guy", "A blind guy walked into a bar, and a chair, and a table....", "Mean", "Blind jokes"));
+            em.persist(new Jokes(2L, "Uncle Joke ", "My boss told me to have a good day... so i went home", "Weird", "Boss jokes"));
+            em.persist(new Jokes(3L, "Lame Peter Pan", "Why is Peter Pan always flying? He neverlands", "Peter Pan", "Peter Pan jokes"));
+
             em.getTransaction().commit();
-        }finally{
+        } finally {
             em.close();
         }
-        
     }
 
     @AfterEach
     public void tearDown() {
     }
-    
-    
+
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/groupmembers").then().statusCode(200);
+        given().when().get("/jokes").then().statusCode(200);
     }
-    
+
     @Test
     public void testDummyMsg() throws Exception {
         given()
-        .contentType("application/json")
-        .get("/groupmembers/").then()
-        .assertThat()
-        .statusCode(HttpStatus.OK_200.getStatusCode())
-        .body("msg", equalTo("Hello World"));   
+                .contentType("application/json")
+                .get("/jokes/").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body("msg", equalTo("Hello World"));
     }
-    
-    
+
     @Test
-    public void getAllMembersTest(){
-        given().when().get("/groupmembers/all").then().statusCode(200);
+    public void getAllJokesTest() {
+        given().when().get("/jokes/all").then().statusCode(200);
+
     }
-    
-    
+
+    @Test
+    public void getRandonJokeTest() {
+        given().when().get("/jokes/random").then().statusCode(200);
+
+    }
+
 //    @Test
-//    public void populateTest(){
-//        given().when().get("/groupmembers/populate").then().statusCode(200);
+//    public void populateTest() {
+//        given().when().get("/jokes/populate").then().statusCode(200);
+//
+//    }
+
+//    @Test
+//    public void getJokeById(){
+//        given()
+//                .contentType("application/json")
+//                .get("/jokes/").then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("msg", equalTo("Hello World"));
+//        
 //    }
 }

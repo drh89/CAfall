@@ -58,6 +58,7 @@ public class CarsFacadeTest {
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         try {
+            
             em.getTransaction().begin();
             em.createNamedQuery("Cars.deleteAllRows").executeUpdate();
             em.persist(new Cars(1L, "Mercedes-benz", "E350", "10/04-2016", 2017L, 268L, 16000L, 5L, 719000L));
@@ -86,11 +87,9 @@ public class CarsFacadeTest {
     public void addCarTest(){
         int sizeBefore = facade.getAllCars().size();
         
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(new Cars(4L, "BMW", "E300", "02/08-2018", 2018L, 114L, 0L, 2L, 200000L));
-        em.getTransaction().commit();
-        em.close();
+        
+        facade.addCar(new Cars(4L, "BMW", "E300", "02/08-2018", 2018L, 114L, 0L, 2L, 200000L));
+        
         
         int sizeAfter = facade.getAllCars().size();
         
