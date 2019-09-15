@@ -29,6 +29,7 @@ public class Jokes implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String title;
     private String joke;
     private String reference;
     private String type;
@@ -37,11 +38,20 @@ public class Jokes implements Serializable {
         
     }
 
-    public Jokes(Long id, String joke, String reference, String type) {
+    public Jokes(Long id, String title, String joke, String reference, String type) {
+        this.title = title;
         this.id = id;
         this.joke = joke;
         this.reference = reference;
         this.type = type;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getJoke() {

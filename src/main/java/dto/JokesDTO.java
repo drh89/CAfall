@@ -14,12 +14,14 @@ import entities.Jokes;
 public class JokesDTO {
     
     private Long id;
+    private String title;
     private String joke;
     
     private String type;
     
     public JokesDTO(Jokes joke){
         this.id = joke.getId();
+        this.title = joke.getTitle();
         this.joke = joke.getJoke();
         this.type = joke.getType();
         
@@ -28,6 +30,15 @@ public class JokesDTO {
     public String getJoke() {
         return joke;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
 
     public void setJoke(String joke) {
         this.joke = joke;

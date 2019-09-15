@@ -81,14 +81,14 @@ public class JokesResource {
     @GET
     @Path("/populate")
     public String populate(){
-        Jokes joke1 = new Jokes(1L, "A boy to his dad: Dad I am hungry. The Dad: I am dad. The boy: Dad I am serious. The dad: Are you Serious, I thought you were Hungry?. The Boy: Are you serious? The dad: No I am still dad", "Dad", "Dad jokes");
-        Jokes joke2 = new Jokes(1L, "A blind guy walked into a bar, and a chair, and a table....", "Mean", "Blind jokes");
-        Jokes joke3 = new Jokes(1L, "Why do blind people love bread with poppy seeds? They love the stories on them", "Mean", "Blind jokes");
-        Jokes joke4 = new Jokes(1L, "Knock Knock. Who is there? It is Ken Lee. Ken Lee who? Keeeen Leeeee, ken liber diber dout you, Ken Leeeeeeee, Ken liber diber dout you!", "Weird", "Knock knock jokes");
-        Jokes joke5 = new Jokes(1L, "Today at the bank, an old lady asked me to help check her balance. So i pushed her over", "Mean", "Old lady jokes");
-        Jokes joke6 = new Jokes(1L, "My boss told me to have a good day... so i went home", "Weird", "Boss jokes");
-        Jokes joke7 = new Jokes(1L, "Why is Peter Pan always flying? He neverlands", "Peter Pan", "Peter Pan jokes");
-        Jokes joke8 = new Jokes(1L, "Why do blind people hate skydiving? It scares the shit out of their dogs", "Mean", "Blind jokes");
+        Jokes joke1 = new Jokes(1L,"Annoying Dad", "A boy to his dad: Dad I am hungry. The Dad: I am dad. The boy: Dad I am serious. The dad: Are you Serious, I thought you were Hungry?. The Boy: Are you serious? The dad: No I am still dad", "Dad", "Dad jokes");
+        Jokes joke2 = new Jokes(1L,"Blind Guy", "A blind guy walked into a bar, and a chair, and a table....", "Mean", "Blind jokes");
+        Jokes joke3 = new Jokes(1L,"Mean Blind Joke", "Why do blind people love bread with poppy seeds? They love the stories on them", "Mean", "Blind jokes");
+        Jokes joke4 = new Jokes(1L,"Weird Knock Knock Joke", "Knock Knock. Who is there? It is Ken Lee. Ken Lee who? Keeeen Leeeee, ken liber diber dout you, Ken Leeeeeeee, Ken liber diber dout you!", "Weird", "Knock knock jokes");
+        Jokes joke5 = new Jokes(1L,"Mean Joke", "Today at the bank, an old lady asked me to help check her balance. So i pushed her over", "Mean", "Old lady jokes");
+        Jokes joke6 = new Jokes(1L,"Uncle Joke ", "My boss told me to have a good day... so i went home", "Weird", "Boss jokes");
+        Jokes joke7 = new Jokes(1L,"Lame Peter Pan", "Why is Peter Pan always flying? He neverlands", "Peter Pan", "Peter Pan jokes");
+        Jokes joke8 = new Jokes(1L,"Crazy Skydiver", "Why do blind people hate skydiving? It scares the shit out of their dogs", "Mean", "Blind jokes");
       
         FACADE.addJoke(joke1);
         FACADE.addJoke(joke2);
