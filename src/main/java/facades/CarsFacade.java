@@ -39,7 +39,7 @@ public class CarsFacade {
     
     
     
-    public List<Cars> getCars() {
+    public List<Cars> getAllCars() {
         EntityManager em = getEntityManager();
         TypedQuery tq = em.createNamedQuery("cars.getAll", Cars.class);
         List<Cars> cars = tq.getResultList();

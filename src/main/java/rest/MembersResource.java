@@ -9,18 +9,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dto.MembersDTO;
 import entities.Members;
-import facades.CarsFacade;
 import facades.MembersFacade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import utils.EMF_Creator;
@@ -57,7 +52,7 @@ public class MembersResource {
     @GET
     @Path("/all")
     public Response getAllMembers(){
-        List<Members> members = FACADE.getMembers();
+        List<Members> members = FACADE.getAllMembers();
         List<MembersDTO> membersDTO = new ArrayList();
         for (Members member : members) {
             membersDTO.add(new MembersDTO(member));

@@ -41,7 +41,7 @@ public class MembersFacade {
         return emf.createEntityManager();
     }
     
-    public List<Members> getMembers(){
+    public List<Members> getAllMembers(){
         EntityManager em = getEntityManager();
         TypedQuery tq = em.createNamedQuery("Members.getAll", Members.class);
         List<Members> members = (List) tq.getResultList();

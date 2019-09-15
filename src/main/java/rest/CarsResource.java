@@ -9,10 +9,7 @@ import facades.CarsFacade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -50,7 +47,7 @@ public class CarsResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getAllCars() {
-        List<Cars> cars = FACADE.getCars();
+        List<Cars> cars = FACADE.getAllCars();
         List<CarsDTO> carsDTO = new ArrayList();
         cars.forEach((car) -> {
             carsDTO.add(new CarsDTO(car));

@@ -25,15 +25,15 @@ public class CarsFacadeTest {
     }
 
     //@BeforeAll
-    public static void setUpClass() {
-        emf = EMF_Creator.createEntityManagerFactory(
-                "pu",
-                "jdbc:mysql://localhost:3307/CAfall_test",
-                "dev",
-                "ax2",
-                EMF_Creator.Strategy.CREATE);
-        facade = CarsFacade.getFacadeExample(emf);
-    }
+//    public static void setUpClass() {
+//        emf = EMF_Creator.createEntityManagerFactory(
+//                "pu",
+//                "jdbc:mysql://localhost:3307/CAfall_test",
+//                "dev",
+//                "ax2",
+//                EMF_Creator.Strategy.CREATE);
+//        facade = CarsFacade.getFacadeExample(emf);
+//    }
 
     /*   **** HINT **** 
         A better way to handle configuration values, compared to the UNUSED example above, is to store those values
@@ -77,7 +77,7 @@ public class CarsFacadeTest {
      
     @Test
     public void testAFacadeMethod() {
-        assertEquals(2, facade.getCars().size(), "Expects two rows in the database");
+        assertEquals(2, facade.getAllCars().size(), "Expects two rows in the database");
     }
 
 }
